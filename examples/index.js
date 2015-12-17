@@ -30,7 +30,9 @@ console.log('\nlast five rows of c =\n'+show(c.lo(c.shape[0]-5,null)))
 console.log('\nrows one to three and columns five to seven =\n'+show(c.hi(3,7).lo(0,4)))
 
 
-var d = pool.zeros(c.shape)
-ops.assign(diag(d), diag(c))
+var d = pool.ones([5,5])
 
-console.log('populated diag(c) =\n'+show(d))
+ops.assigns(diag(d),2)
+console.log(show(d))
+
+

@@ -1,7 +1,7 @@
 {
-  "name": "scijs-for-matlab-users",
+  "name": "scijs-ndarrays-for-matlab-users",
   "version": "0.1.0",
-  "description": "Common operations scijs/ndarray operations for people familar with MATLAB (or at least not familiar with scijs)",
+  "description": "Common scijs/ndarray operations for people familar with MATLAB (or at least not familiar with scijs)",
   "main": "index.js",
   "directories": {
     "example": "examples"

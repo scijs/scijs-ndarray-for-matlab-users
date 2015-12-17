@@ -1,6 +1,72 @@
-# scijs for MATLAB users
+# scijs ndarrays for MATLAB users
 
-> Common operations [scijs/ndarray](https://github.com/scijs/ndarray) operations for people familar with MATLAB (or at least not familiar with [scijs](https://github.com/scijs))
+> Common [scijs/ndarray](https://github.com/scijs/ndarray) operations for people familar with MATLAB (or at least not familiar with [scijs](https://github.com/scijs))
+
+## Introduction
+
+This document is a work in progress! Inspired by [Numpy for Matlab users](https://docs.scipy.org/doc/numpy-dev/user/numpy-for-matlab-users.html), aspiring to be [NumPy for MATLAB users](http://mathesaurus.sourceforge.net/matlab-numpy.html).
+
+Not all operations have a direct translation, in particular since ndarrays allow somewhat different memory managment, since JavaScript does not allow operator overloading, and since JavaScript has no native complex numbers. Many ndarray operations return or operate on views—that is, symbolic representations of ndarrays that operate on the same underlying data.
+
+## Memory Management
+
+To get a sense for how managing ndarrays differs from managing MATLAB arrays, consider the diagonal of a 5&times;5 matrix:
+
+```javascript
+var iota = require('iota-array')
+var pool = require('ndarray-scratch')
+var diag = require('ndarray-diagonal')
+
+// A 5x5 matrix of ones:
+var a = pool.ones([5,5])
+
+// A view of the diagonal of a:
+var x = diag(a)
+```
+
+The data contained in ndarray `x` is identical by reference to that in `a`. The strides and offsets have been modified to select only the diagonal elements. To see this directly:
+
+```javascript
+console.log(x)
+// => View1dfloat64 {
+//   data: 
+//    Float64Array {'0': 1, '1': 1, '2': 1, ..., '22': 1, '23': 1, '24': 1 },
+//   shape: [ 5 ],
+//   stride: [ 6 ],
+//   offset: 0 }
+```
+
+Cloning simplifies the representation by allocating new storage and copying only the elements in the diagonal view:
+
+```javascript
+console.log(pool.clone(x))
+// => View1dfloat64 {
+//      data: Float64Array { '0': 1, '1': 1, '2': 1, '3': 1, '4': 1 },
+//      shape: [ 5 ],
+//      stride: [ 1 ],
+//      offset: 0 }
+```
+
+A big advantage is the ability to manipulate representations directly without iterating directly or allocating additional memory:
+
+```javascript
+var ops = require('ndarray-ops')
+var show = require('ndarray-show')
+
+// Set each element of the diagonal to 2:
+ops.assigns(diag(a, 2))
+
+console.log(show(a))
+// =>  2.000    1.000    1.000    1.000    1.000
+//     1.000    2.000    1.000    1.000    1.000
+//     1.000    1.000    2.000    1.000    1.000
+//     1.000    1.000    1.000    2.000    1.000
+//     1.000    1.000    1.000    1.000    2.000
+```
+
+## Operations
+
+The table below collects common matlab operations as well as their ndarray analogs. Not all operations have a conterpart, some because of features and shortcomings of the JavaScript language, some because of differences in memory management, and some because they're simply not yet implemented.
 
 MATLAB            | JavaScript          | Notes
 :-----------------|:--------------------|:---------------
@@ -32,7 +98,7 @@ MATLAB            | JavaScript          | Notes
 `a ./ b`          | [`ops.div`](https://github.com/scijs/ndarray-ops)`(c, a, b) ` | element-wise division
 `a = a ./ b`      | [`ops.diveq`](https://github.com/scijs/ndarray-ops)`(a, b)`   | element-wise division (in-place)
 `a.^3`            | [`ops.pows`](https://github.com/scijs/ndarray-ops)`(a, 3)`    | element-wise scalar exponentiation
-`(a>0.5)`         |                     | matrix whose i,jth element is (a_ij > 0.5)
+`(a>0.5)`         |                     | matrix whose i,jth element is (a\_ij > 0.5)
 `find(a>0.5)`     |                     | find the indices where (a > 0.5)
 `a(:,find(v>0.5))`|                     | extract the columns of a where vector v > 0.5
 `a(a<0.5)=0`      |                     | `a` with elements less than 0.5 zeroed out
@@ -79,3 +145,7 @@ MATLAB            | JavaScript          | Notes
 `unique`          |                     | 
 `squeeze(a)`      |                     |
 
+
+## License
+
+&copy; 2015 Ricky Reusser. MIT License. 
