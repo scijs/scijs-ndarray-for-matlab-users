@@ -1,0 +1,23 @@
+{
+  "name": "scijs-for-matlab-users",
+  "version": "0.1.0",
+  "description": "Common operations scijs/ndarray operations for people familar with MATLAB (or at least not familiar with scijs)",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "iota-array": "^1.0.0",
+    "ndarray": "^1.0.18",
+    "ndarray-diagonal": "^1.0.0",
+    "ndarray-fill": "^1.0.1",
+    "ndarray-ops": "^1.2.2",
+    "ndarray-scratch": "^1.2.0",
+    "ndarray-show": "^2.0.0"
+  }
+}
