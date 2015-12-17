@@ -1,4 +1,4 @@
-# scijs ndarrays for MATLAB users
+# scijs/ndarray for MATLAB users
 
 > Common [scijs/ndarray](https://github.com/scijs/ndarray) operations for people familar with MATLAB (or at least not familiar with [scijs](https://github.com/scijs))
 

@@ -1,5 +1,5 @@
 {
-  "name": "scijs-ndarrays-for-matlab-users",
+  "name": "scijs-ndarray-for-matlab-users",
   "version": "0.1.0",
   "description": "Common scijs/ndarray operations for people familar with MATLAB (or at least not familiar with scijs)",
   "main": "index.js",
