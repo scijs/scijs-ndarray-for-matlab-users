@@ -44,7 +44,7 @@ console.log(pool.clone(x))
 //      offset: 0 }
 ```
 
-As a result, a nice advantage of ndarrays the ability to manipulate representations without the need to iterate directly or allocate additional storage (beyond the lightweight ndarray wrapper). The example below uses in-place operations of [ndarray-ops](https://github.com/scijs/ndarray-ops) to assign the scalar 3 to the diagonal and double the first two rows of `a`:
+As a result, a nice advantage of ndarrays the ability to manipulate representations without the need to iterate directly or allocate additional storage (beyond the lightweight ndarray wrapper). The example below uses in-place operations of [ndarray-ops](https://github.com/scijs/ndarray-ops) to assign the scalar 3 to the diagonal and double the first two columns of `a`:
 
 ```javascript
 var ops = require('ndarray-ops')
