@@ -50,10 +50,10 @@ As a result, a nice advantage of ndarrays the ability to manipulate representati
 var ops = require('ndarray-ops')
 var show = require('ndarray-show')
 
-// Set each element of the diagonal of a (5x5 matrix of ones) to 2:
+// Set each element of the diagonal of a (5x5 matrix of ones) to 3:
 ops.assigns(diag(a, 3))
 
-// Double the first two rows:
+// Double the first two columns:
 ops.mulseq(a.hi(null,2))
 
 console.log(show(a))
