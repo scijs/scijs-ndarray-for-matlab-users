@@ -66,7 +66,7 @@ console.log(show(a))
 
 ## Operations
 
-The table below collects common matlab operations as well as their ndarray analogs. Not all operations have a conterpart, some because of features and shortcomings of the JavaScript language, some because of differences in memory management, and some because they're simply not yet implemented.
+The table below collects common matlab operations as well as their ndarray analogs. Not all operations have a counterpart, some because of features and shortcomings of the JavaScript language, some because of differences in memory management, and some because they're simply not yet implemented.
 
 MATLAB            | JavaScript          | Notes
 :-----------------|:--------------------|:---------------
