@@ -50,7 +50,7 @@ As a result, a nice advantage of ndarrays the ability to manipulate representati
 var ops = require('ndarray-ops')
 var show = require('ndarray-show')
 
-// Set each element of the diagonal of a (5x5 identity) to 2:
+// Set each element of the diagonal of a (5x5 matrix of ones) to 2:
 ops.assigns(diag(a, 3))
 
 // Double the first two rows:
@@ -81,7 +81,7 @@ MATLAB            | JavaScript          | Notes
 `a(2, 5)`          | `a.get(1, 4)`        | access element in second row, fifth column
 `a(2, :)`          | `a.pick(1, null)`    | entire second row of `a`
 `a(1:5, :)`        | `a.hi(5, null)`      | the first five rows of `a`
-`a(end-4:end, :)`  | `a.lo(c.shape[0]-5, null)` | the last five rows of `a`
+`a(end-4:end, :)`  | `a.lo(a.shape[0]-5, null)` | the last five rows of `a`
 `a(1:3, 5:9)`      | `a.hi(3, 9).lo(0, 4)` | rows one to three and columns five to nine of `a`
 `a([2, 4, 5], [1, 3])`|                     | rows 2, 4, and 5 and columns 1 and 3.
 `a(3:2:21, :)`     | `a.hi(21, null).lo(2, null).step(2, 1)` | every other row of `a`, starting with the third and going to the twenty-first
@@ -93,7 +93,7 @@ MATLAB            | JavaScript          | Notes
 `c = a * b`       | [`ndgemm`](https://github.com/scijs/ndgemm)`(c, a, b)`| matrix multiply
 `c = a + b`       | [`ops.add`](https://github.com/scijs/ndarray-ops)`(c, a, b)`  | matrix addition
 `c = a + 2`       | [`ops.adds`](https://github.com/scijs/ndarray-ops)`(c, a, 2)`  | matrix + scalar addition
-`c *= a + b` (not available in MATLAB) | [`ops.addeq`](https://github.com/scijs/ndarray-ops)`(a, b)`  | in-palce matrix addition
+`a += a + b` (not available in MATLAB) | [`ops.addeq`](https://github.com/scijs/ndarray-ops)`(a, b)`  | in-palce matrix addition
 `c = a .* b`      | [`ops.mul`](https://github.com/scijs/ndarray-ops)`(c, a, b)`  | element-wise multiply
 `a = a .* b`      | [`ops.muleq`](https://github.com/scijs/ndarray-ops)`(a, b)`   | element-wise multiply (in-place)
 `c = a ./ b`      | [`ops.div`](https://github.com/scijs/ndarray-ops)`(c, a, b) ` | element-wise division
