@@ -33,6 +33,8 @@ console.log('\nrows one to three and columns five to seven =\n'+show(c.hi(3,7).l
 var d = pool.ones([5,5])
 
 ops.assigns(diag(d),2)
+ops.mulseq(d.hi(null,2),2)
+
 console.log(show(d))
 
 
