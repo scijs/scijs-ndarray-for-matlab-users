@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This document is a work in progress! Inspired by [Numpy for Matlab users](https://docs.scipy.org/doc/numpy-dev/user/numpy-for-matlab-users.html), it aspires to be [NumPy for MATLAB users](http://mathesaurus.sourceforge.net/matlab-numpy.html). The intent is both to communicate what is possible in JavaScript and to illuminate which parts still need work. I'll be mostly offline until the new year so I may not respond immediately, but comments, question and pull requests are more than welcome.
+This document is a work in progress! Inspired by [Numpy for Matlab users](https://docs.scipy.org/doc/numpy-dev/user/numpy-for-matlab-users.html), it aspires to be [NumPy for MATLAB users](http://mathesaurus.sourceforge.net/matlab-numpy.html). The intent is both to communicate what is possible in JavaScript using scijs and to illuminate which parts still need work. I'll be mostly offline until the new year so I may not respond immediately, but comments, question and pull requests are more than welcome.
 
 ## Memory Management
 
