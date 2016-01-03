@@ -70,7 +70,7 @@ The table below collects common matlab operations as well as their ndarray analo
 
 MATLAB            | JavaScript          | Notes
 :-----------------|:--------------------|:---------------
-`ndims(a)`        | `a.dimension`       | get the number of dimensions of `a`
+`ndims(a)`        | [`a.dimension`](https://github.com/scijs/ndarray#arraydimension)       | get the number of dimensions of `a`
 `numel(a)`        | [`a.size`](https://github.com/scijs/ndarray#arraysize)            | get the number of elements of an arary
 `size(a)`         | [`a.shape`](https://github.com/scijs/ndarray#members)           | get the size of the array
 `size(a,n)`       | [`a.shape`](https://github.com/scijs/ndarray#members)`[n-1]`      | get the number of elements of the n-th dimension of array `a`
