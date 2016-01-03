@@ -116,7 +116,7 @@ MATLAB            | JavaScript          | Notes
 `diag(a)`         | [`diag`](https://github.com/scijs/ndarray-diagonal)`(a)`| vector of diagonal elements of `a` (returns diagonal by reference)
 `diag(a, 0)`       | `b = `[`pool.zeros`](https://github.com/scijs/ndarray-scratch)`(a.shape)` <br> [`ops.assign`](https://github.com/scijs/ndarray-ops)`(`[`diag`](https://github.com/scijs/ndarray-diagonal)`(b), `[`diag`](https://github.com/scijs/ndarray-diagonal)`(a))` | square diagonal matrix whose nonzero values are the elements of a
 `rand(3, 4)`       | [`fill`](https://www.npmjs.com/package/ndarray-fill)`(`[`pool.zeros`](https://github.com/scijs/ndarray-scratch#poolmallocshape-dtype)`([3, 4]), Math.random)` | random 3&times;4 matrix
-`linspace(1, 3, 4)` |                     | 4 equally spaced samples between 1 and 3, inclusive
+`linspace(1, 3, 4)` | [`linspace`](https://github.com/scijs/ndarray-linspace)`(1, 3, 4)` | 4 equally spaced samples between 1 and 3, inclusive
 `[x, y] = meshgrid(0:8, 0:5)` |            | two 2D arrays: one of x values, one of y values
 `[x, y] = meshgrid([1, 2, 4], [2, 4, 5])` |     |
 `repmat(a, m, n)` | [`tile`](https://github.com/scijs/ndarray-tile)`(a, [m, n])`| create m&times;n copies of `a`
