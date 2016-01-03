@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This document is a work in progress! Inspired by [Numpy for Matlab users](https://docs.scipy.org/doc/numpy-dev/user/numpy-for-matlab-users.html), it aspires to be [NumPy for MATLAB users](http://mathesaurus.sourceforge.net/matlab-numpy.html). The intent is both to communicate what is possible in JavaScript and to illuminate which parts still need work. I'll be mostly offline until the new year so I may not respond immediately, but comments, question and pull requests are more than welcome.
+This document is a work in progress! Inspired by [Numpy for Matlab users](https://docs.scipy.org/doc/numpy-dev/user/numpy-for-matlab-users.html), it aspires to be [NumPy for MATLAB users](http://mathesaurus.sourceforge.net/matlab-numpy.html). The intent is both to communicate what is possible in JavaScript using scijs and to illuminate which parts still need work. I'll be mostly offline until the new year so I may not respond immediately, but comments, question and pull requests are more than welcome.
 
 ## Memory Management
 
@@ -44,16 +44,16 @@ console.log(pool.clone(x))
 //      offset: 0 }
 ```
 
-As a result, a nice advantage of ndarrays the ability to manipulate representations without the need to iterate directly or allocate additional memory. The example below uses in-place operations of [ndarray-ops](https://github.com/scijs/ndarray-ops) to assign the scalar 3 to the diagonal and double the first two rows of `a`:
+As a result, a nice advantage of ndarrays the ability to manipulate representations without the need to iterate directly or allocate additional storage (beyond the lightweight ndarray wrapper). The example below uses in-place operations of [ndarray-ops](https://github.com/scijs/ndarray-ops) to assign the scalar 3 to the diagonal and double the first two columns of `a`:
 
 ```javascript
 var ops = require('ndarray-ops')
 var show = require('ndarray-show')
 
-// Set each element of the diagonal of a (5x5 identity) to 2:
+// Set each element of the diagonal of a (5x5 matrix of ones) to 3:
 ops.assigns(diag(a, 3))
 
-// Double the first two rows:
+// Double the first two columns:
 ops.mulseq(a.hi(null,2))
 
 console.log(show(a))
@@ -66,7 +66,7 @@ console.log(show(a))
 
 ## Operations
 
-The table below collects common matlab operations as well as their ndarray analogs. Not all operations have a conterpart, some because of features and shortcomings of the JavaScript language, some because of differences in memory management, and some because they're simply not yet implemented.
+The table below collects common matlab operations as well as their ndarray analogs. Not all operations have a counterpart, some because of features and shortcomings of the JavaScript language, some because of differences in memory management, and some because they're simply not yet implemented.
 
 MATLAB            | JavaScript          | Notes
 :-----------------|:--------------------|:---------------
@@ -81,7 +81,7 @@ MATLAB            | JavaScript          | Notes
 `a(2, 5)`          | `a.get(1, 4)`        | access element in second row, fifth column
 `a(2, :)`          | `a.pick(1, null)`    | entire second row of `a`
 `a(1:5, :)`        | `a.hi(5, null)`      | the first five rows of `a`
-`a(end-4:end, :)`  | `a.lo(c.shape[0]-5, null)` | the last five rows of `a`
+`a(end-4:end, :)`  | `a.lo(a.shape[0]-5, null)` | the last five rows of `a`
 `a(1:3, 5:9)`      | `a.hi(3, 9).lo(0, 4)` | rows one to three and columns five to nine of `a`
 `a([2, 4, 5], [1, 3])`|                     | rows 2, 4, and 5 and columns 1 and 3.
 `a(3:2:21, :)`     | `a.hi(21, null).lo(2, null).step(2, 1)` | every other row of `a`, starting with the third and going to the twenty-first
@@ -93,7 +93,7 @@ MATLAB            | JavaScript          | Notes
 `c = a * b`       | [`ndgemm`](https://github.com/scijs/ndgemm)`(c, a, b)`| matrix multiply
 `c = a + b`       | [`ops.add`](https://github.com/scijs/ndarray-ops)`(c, a, b)`  | matrix addition
 `c = a + 2`       | [`ops.adds`](https://github.com/scijs/ndarray-ops)`(c, a, 2)`  | matrix + scalar addition
-`c *= a + b` (not available in MATLAB) | [`ops.addeq`](https://github.com/scijs/ndarray-ops)`(a, b)`  | in-palce matrix addition
+`a += a + b` (not available in MATLAB) | [`ops.addeq`](https://github.com/scijs/ndarray-ops)`(a, b)`  | in-palce matrix addition
 `c = a .* b`      | [`ops.mul`](https://github.com/scijs/ndarray-ops)`(c, a, b)`  | element-wise multiply
 `a = a .* b`      | [`ops.muleq`](https://github.com/scijs/ndarray-ops)`(a, b)`   | element-wise multiply (in-place)
 `c = a ./ b`      | [`ops.div`](https://github.com/scijs/ndarray-ops)`(c, a, b) ` | element-wise division
