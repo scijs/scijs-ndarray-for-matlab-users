@@ -71,24 +71,24 @@ The table below collects common matlab operations as well as their ndarray analo
 MATLAB            | JavaScript          | Notes
 :-----------------|:--------------------|:---------------
 `ndims(a)`        | `a.dimension`       | get the number of dimensions of `a`
-`numel(a)`        | `a.size`            | get the number of elements of an arary
-`size(a)`         | `a.shape`           | get the size of the array
-`size(a,n)`       | `a.shape[n-1]`      | get the number of elements of the n-th dimension of array `a`
-`[1 2 3; 4 5 6 ]` | `ndarray([1,2,3,4,5,6],[2,3])`                    | 2&times;3 matrix literal (using `Array` type)
-                  | `ndarray(new Float64Array([1,2,3,4,5,6]),[2,3])`  | 2&times;3 matrix literal (using 64-bit typed array)
+`numel(a)`        | [`a.size`](https://github.com/scijs/ndarray#arraysize)            | get the number of elements of an arary
+`size(a)`         | [`a.shape`](https://github.com/scijs/ndarray#members)           | get the size of the array
+`size(a,n)`       | [`a.shape`](https://github.com/scijs/ndarray#members)`[n-1]`      | get the number of elements of the n-th dimension of array `a`
+`[1 2 3; 4 5 6 ]` | [`ndarray`](https://github.com/scijs/ndarray#constructor)`([1,2,3,4,5,6],[2,3])`                    | 2&times;3 matrix literal (using `Array` type)
+                  | [`ndarray`](https://github.com/scijs/ndarray#constructor)`(new Float64Array([1,2,3,4,5,6]),[2,3])`  | 2&times;3 matrix literal (using 64-bit typed array)
                   | [`pack`](https://github.com/scijs/ndarray-pack)`([[1,2,3],[4,5,6]])` | 2&times;3 matrix literal from nested array
-`a(end)`          | `a.get(a.shape[0]-1)` | access last element in the 1&times;n matrix `a`
-`a(2, 5)`          | `a.get(1, 4)`        | access element in second row, fifth column
-`a(2, :)`          | `a.pick(1, null)`    | entire second row of `a`
-`a(1:5, :)`        | `a.hi(5, null)`      | the first five rows of `a`
-`a(end-4:end, :)`  | `a.lo(a.shape[0]-5, null)` | the last five rows of `a`
-`a(1:3, 5:9)`      | `a.hi(3, 9).lo(0, 4)` | rows one to three and columns five to nine of `a`
+`a(end)`          | [`a.get`](https://github.com/scijs/ndarray#arraygetij)`(a.shape[0]-1)` | access last element in the 1&times;n matrix `a`
+`a(2, 5)`          | [`a.get`](https://github.com/scijs/ndarray#arraygetij)`(1, 4)`        | access element in second row, fifth column
+`a(2, :)`          | [`a.pick`](https://github.com/scijs/ndarray#arraypickp0-p1-)`(1, null)`    | entire second row of `a`
+`a(1:5, :)`        | [`a.hi`](https://github.com/scijs/ndarray#arrayhiijk)`(5, null)`      | the first five rows of `a`
+`a(end-4:end, :)`  | [`a.lo`](https://github.com/scijs/ndarray#arrayloijk)`(a.shape[0]-5, null)` | the last five rows of `a`
+`a(1:3, 5:9)`      | [`a.hi`](https://github.com/scijs/ndarray#arrayhiijk)`(3, 9).lo(0, 4)` | rows one to three and columns five to nine of `a`
 `a([2, 4, 5], [1, 3])`|                     | rows 2, 4, and 5 and columns 1 and 3.
-`a(3:2:21, :)`     | `a.hi(21, null).lo(2, null).step(2, 1)` | every other row of `a`, starting with the third and going to the twenty-first
-`a(1:2:end, :)`    | `a.step(2, 1)`       | every other row of `a`, starting with the first
-`a(end:-1:1, :)` or `flipup(a)` | `a.step(-1, 1)` | `a` with rows in reverse order
+`a(3:2:21, :)`     | [`a.hi`](https://github.com/scijs/ndarray#arrayhiijk)`(21, null).`[`lo`](https://github.com/scijs/ndarray#arrayloijk)`(2, null).`[`step`](https://github.com/scijs/ndarray#arraystepijk)`(2, 1)` | every other row of `a`, starting with the third and going to the twenty-first
+`a(1:2:end, :)`    | [`a.step`](https://github.com/scijs/ndarray#arraystepijk)`(2, 1)`       | every other row of `a`, starting with the first
+`a(end:-1:1, :)` or `flipup(a)` | [`a.step`](https://github.com/scijs/ndarray#arraystepijk)`(-1, 1)` | `a` with rows in reverse order
 `a([1:end 1], :)`  |                     | `a` with copy of the first rows appended to the end
-`a.'`             | `a.transpose(1, 0)`  | transpose of `a`
+`a.'`             | [`a.transpose`](https://github.com/scijs/ndarray#arraytransposep0-p1-)`(1, 0)`  | transpose of `a`
 `a'`              |                     | conjugate transpose of `a`
 `c = a * b`       | [`ndgemm`](https://github.com/scijs/ndgemm)`(c, a, b)`| matrix multiply
 `c = a + b`       | [`ops.add`](https://github.com/scijs/ndarray-ops)`(c, a, b)`  | matrix addition
