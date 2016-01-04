@@ -144,7 +144,7 @@ MATLAB            | JavaScript          | Notes
 `regress(y, X)`    | [`qr.factor`](https://github.com/scijs/ndarray-householder-qr#factor-a-d-)`( A, d );`<br> [`qr.solve`](https://github.com/scijs/ndarray-householder-qr#solve-a-d-x-)`( A, d, y );` | multilinear regression
 `decimate(x, q)`   | [`resample`](https://github.com/scijs/ndarray-resample)`(output, input)` | downsample with low-pass filtering ([`resample`](https://github.com/scijs/ndarray-resample) downsamples by a factor of two)
 `unique`          |                     | 
-`squeeze(a)`      |                     |
+`squeeze(a)`      | [`squeeze`]()`(a)`  | Remove singleton dimensions of `a`
 
 
 ## License
