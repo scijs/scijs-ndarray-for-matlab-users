@@ -93,7 +93,7 @@ MATLAB            | JavaScript          | Notes
 `c = a * b`       | [`ndgemm`](https://github.com/scijs/ndgemm)`(c, a, b)`| matrix multiply
 `c = a + b`       | [`ops.add`](https://github.com/scijs/ndarray-ops)`(c, a, b)`  | matrix addition
 `c = a + 2`       | [`ops.adds`](https://github.com/scijs/ndarray-ops)`(c, a, 2)`  | matrix + scalar addition
-`a += a + b` (not available in MATLAB) | [`ops.addeq`](https://github.com/scijs/ndarray-ops)`(a, b)`  | in-palce matrix addition
+`a += b` (not available in MATLAB) | [`ops.addeq`](https://github.com/scijs/ndarray-ops)`(a, b)`  | in-place matrix addition
 `c = a .* b`      | [`ops.mul`](https://github.com/scijs/ndarray-ops)`(c, a, b)`  | element-wise multiply
 `a = a .* b`      | [`ops.muleq`](https://github.com/scijs/ndarray-ops)`(a, b)`   | element-wise multiply (in-place)
 `c = a ./ b`      | [`ops.div`](https://github.com/scijs/ndarray-ops)`(c, a, b) ` | element-wise division
