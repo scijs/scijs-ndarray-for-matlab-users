@@ -121,7 +121,7 @@ MATLAB            | JavaScript          | Notes
 `[x, y] = meshgrid([1, 2, 4], [2, 4, 5])` |     |
 `repmat(a, m, n)` | [`tile`](https://github.com/scijs/ndarray-tile)`(a, [m, n])`| create m&times;n copies of `a`
 `[a b]`           |                     | concatenate columns of `a` and `b`
-`[a; b]`          |                     | concatenate rows of `a` and `b`
+`[a; b]`          | [`concatRows`](https://github.com/scijs/ndarray-concat-rows)`([a, b])` | concatenate rows of `a` and `b`
 `max(max(a))`     |                     | maximum element of `a`
 `max(a)`          | [`ops.max`](https://github.com/scijs/ndarray-ops#map-reduce-aggregate-operators)`(a)` | maximum element in `a`
 `norm(v)`         | [`ops.norm2`](https://github.com/scijs/ndarray-ops#map-reduce-aggregate-operators)`(v)` | L2 norm of vector `v`
