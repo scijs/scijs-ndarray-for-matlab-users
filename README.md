@@ -90,7 +90,7 @@ MATLAB            | JavaScript          | Notes
 `a([1:end 1], :)`  |                     | `a` with copy of the first rows appended to the end
 `a.'`             | [`a.transpose`](https://github.com/scijs/ndarray#arraytransposep0-p1-)`(1, 0)`  | transpose of `a`
 `a'`              |                     | conjugate transpose of `a`
-`c = a * b`       | [`ndgemm`](https://github.com/scijs/ndgemm)`(c, a, b)`| matrix multiply
+`c = a * b`       | [`gemm`](https://github.com/scijs/ndarray-gemm)`(c, a, b)`| matrix multiply
 `c = a + b`       | [`ops.add`](https://github.com/scijs/ndarray-ops)`(c, a, b)`  | matrix addition
 `c = a + 2`       | [`ops.adds`](https://github.com/scijs/ndarray-ops)`(c, a, 2)`  | matrix + scalar addition
 `a += b` (not available in MATLAB) | [`ops.addeq`](https://github.com/scijs/ndarray-ops)`(a, b)`  | in-place matrix addition
