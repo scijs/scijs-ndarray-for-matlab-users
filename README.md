@@ -120,7 +120,7 @@ MATLAB            | JavaScript          | Notes
 `[x, y] = meshgrid(0:8, 0:5)` |            | two 2D arrays: one of x values, one of y values
 `[x, y] = meshgrid([1, 2, 4], [2, 4, 5])` |     |
 `repmat(a, m, n)` | [`tile`](https://github.com/scijs/ndarray-tile)`(a, [m, n])`| create m&times;n copies of `a`
-`[a b]`           |                     | concatenate columns of `a` and `b`
+`[a b]`           | [`concatCols`](https://github.com/scijs/ndarray-concat-cols)`([a, b])` | concatenate columns of `a` and `b`
 `[a; b]`          | [`concatRows`](https://github.com/scijs/ndarray-concat-rows)`([a, b])` | concatenate rows of `a` and `b`
 `max(max(a))`     |                     | maximum element of `a`
 `max(a)`          | [`ops.max`](https://github.com/scijs/ndarray-ops#map-reduce-aggregate-operators)`(a)` | maximum element in `a`
