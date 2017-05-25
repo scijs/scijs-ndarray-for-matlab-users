@@ -75,8 +75,8 @@ MATLAB            | JavaScript          | Notes
 `size(a)`         | [`a.shape`](https://github.com/scijs/ndarray#members)           | get the size of the array
 `size(a,n)`       | [`a.shape`](https://github.com/scijs/ndarray#members)`[n-1]`      | get the number of elements of the n-th dimension of array `a`
 `[1 2 3; 4 5 6 ]` | [`ndarray`](https://github.com/scijs/ndarray#constructor)`([1,2,3,4,5,6],[2,3])`                    | 2&times;3 matrix literal (using `Array` type)
-                  | [`ndarray`](https://github.com/scijs/ndarray#constructor)`(new Float64Array([1,2,3,4,5,6]),[2,3])`  | 2&times;3 matrix literal (using 64-bit typed array)
-                  | [`pack`](https://github.com/scijs/ndarray-pack)`([[1,2,3],[4,5,6]])` | 2&times;3 matrix literal from nested array
+ &nbsp;                 | [`ndarray`](https://github.com/scijs/ndarray#constructor)`(new Float64Array([1,2,3,4,5,6]),[2,3])`  | 2&times;3 matrix literal (using 64-bit typed array)
+ &nbsp;                 | [`pack`](https://github.com/scijs/ndarray-pack)`([[1,2,3],[4,5,6]])` | 2&times;3 matrix literal from nested array
 `a(end)`          | [`a.get`](https://github.com/scijs/ndarray#arraygetij)`(a.shape[0]-1)` | access last element in the 1&times;n matrix `a`
 `a(2, 5)`          | [`a.get`](https://github.com/scijs/ndarray#arraygetij)`(1, 4)`        | access element in second row, fifth column
 `a(2, :)`          | [`a.pick`](https://github.com/scijs/ndarray#arraypickp0-p1-)`(1, null)`    | entire second row of `a`
@@ -140,7 +140,7 @@ MATLAB            | JavaScript          | Notes
 `fft(a)`          | [`fft`](https://github.com/scijs/ndarray-fft#requirendarray-fftdir-x-y)`(1, ar, ai)` | Fourier transform of `a`. Javascript does not have a complex type so real and imaginary parts must be passed separately.
 `ifft(a)`         | [`fft`](https://github.com/scijs/ndarray-fft#requirendarray-fftdir-x-y)`(-1, ar, ai)`| inverse Fourier transform of `a`
 `[b, I] = sortrows(a, i)` | [`sort`](https://github.com/scijs/ndarray-sort)`(a)` | sort the rows of the matrix
-                      | [`sort`](https://github.com/scijs/ndarray-sort)`(a.transpose(1, 0))` | sort the column of the matrix
+ &nbsp;                    | [`sort`](https://github.com/scijs/ndarray-sort)`(a.transpose(1, 0))` | sort the column of the matrix
 `regress(y, X)`    | [`qr.factor`](https://github.com/scijs/ndarray-householder-qr#factor-a-d-)`( A, d );`<br> [`qr.solve`](https://github.com/scijs/ndarray-householder-qr#solve-a-d-x-)`( A, d, y );` | multilinear regression
 `decimate(x, q)`   | [`resample`](https://github.com/scijs/ndarray-resample)`(output, input)` | downsample with low-pass filtering ([`resample`](https://github.com/scijs/ndarray-resample) downsamples by a factor of two)
 `unique`          |                     | 
